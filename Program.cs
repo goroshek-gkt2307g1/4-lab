@@ -23,8 +23,8 @@ namespace лаба_4
 				.WithComponent("Wi-Fi модуль")
 				.WithComponent("Дополнительный вентилятор")
 				.Build();
-			Console.WriteLine("Компьютер создан");
 			myComputer.Display();
+
 
 			Computer shallowCopy = myComputer.ShallowCopy();
 			Console.WriteLine("Поверхностная копия");
@@ -45,6 +45,34 @@ namespace лаба_4
 			myComputer.Display();
 			Console.WriteLine("Глубокая копия:");
 			deepCopy.Display();
+
+
+			Console.WriteLine("\nПаттерн синглтон\n");
+
+			PrototypeRegistry r1 = PrototypeRegistry.Instance;
+			PrototypeRegistry r2 = PrototypeRegistry.Instance;
+
+			Console.WriteLine($"Один объект? {ReferenceEquals(r1, r2)}\n");
+
+			Console.WriteLine("тест прототипов\n");
+
+			Computer game1 = r1.GetPrototype("gaming");
+			Console.WriteLine("Оригинал (первая копия):");
+			game1.Display();
+
+			game1.AdditionalComponents.Add("новый компонент");
+			Console.WriteLine("\nПосле изменения:");
+			game1.Display();
+
+			Computer game2 = r1.GetPrototype("gaming");
+			Console.WriteLine("\nСвежая копия (без изменений):");
+			game2.Display();
+
+			Console.WriteLine("\nвсе прототипы\n");
+
+			r1.GetPrototype("office").Display();
+			r1.GetPrototype("home").Display();
+			r1.GetPrototype("gaming").Display();
 
 			Console.ReadLine();
 
