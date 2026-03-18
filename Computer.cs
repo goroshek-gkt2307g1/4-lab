@@ -8,8 +8,8 @@ namespace лаба_4
 {
 	public interface IMyCloneable
 	{
-		void ShallowCopy();
-		void DeepCopy();
+		Computer ShallowCopy();
+		Computer DeepCopy();
 	}
 
 	public class Computer : IMyCloneable
@@ -41,13 +41,15 @@ namespace лаба_4
 		}
 
 
-		public void ShallowCopy()
+		public Computer ShallowCopy()
 		{
-
+			return (Computer)MemberwiseClone();
 		}
-		public void DeepCopy() 
+		public Computer DeepCopy() 
 		{
-
+			Computer other = (Computer)MemberwiseClone();
+			other.AdditionalComponents = new List<string>(this.AdditionalComponents);
+			return other;
 		}
 	}
 }
