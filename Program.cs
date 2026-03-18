@@ -14,6 +14,7 @@ namespace лаба_4
 		static void Main(string[] args)
 		{
 			ComputerBuilder builder = new ComputerBuilder();
+
 			Computer myComputer = builder
 				.WithCPU("Intel Core i5")
 				.WithGPU("NVIDIA GTX 1660")
@@ -21,9 +22,8 @@ namespace лаба_4
 				.WithComponent("Wi-Fi модуль")
 				.WithComponent("Дополнительный вентилятор")
 				.Build();
-
+			Console.WriteLine("Компьютер создан");
 			myComputer.Display();
-			Console.WriteLine();
 			Console.ReadLine();
 
 		}

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace лаба_4
 {
-	public interface ICloneable
+	public interface IMyCloneable
 	{
 		void ShallowCopy();
 		void DeepCopy();
 	}
 
-	public class Computer : ICloneable
+	public class Computer : IMyCloneable
 	{
 		public string CPU;
 		public int RAM;
@@ -22,8 +22,24 @@ namespace лаба_4
 
 		public void Display()
 		{
-			Console.WriteLine($"CPU: { CPU} \nGPU: { GPU} \nRAM: {RAM} \nAdditionalComponents: {AdditionalComponents}" );
+			Console.WriteLine($"CPU: {CPU}");
+			Console.WriteLine($"GPU: {GPU}");
+			Console.WriteLine($"RAM: {RAM}");
+			Console.WriteLine("AdditionalComponents:");
+
+			if (AdditionalComponents.Count == 0)
+			{
+				Console.WriteLine("  (нет дополнительных компонентов)");
+			}
+			else
+			{
+				foreach (string component in AdditionalComponents)
+				{
+					Console.WriteLine($"  - {component}");
+				}
+			}
 		}
+
 
 		public void ShallowCopy()
 		{
